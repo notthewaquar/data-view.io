@@ -42,6 +42,10 @@ export class NavbarComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.initSideBar();
+  }
+
+  initSideBar() {
     this.favList = this.dashboardApiData
       .filter((item: DashboardList) => {
         return item.fav;
@@ -87,7 +91,7 @@ export class NavbarComponent implements OnInit {
           {
             label: 'Create Dashboard',
             icon: 'pi pi-fw pi-plus',
-            command: () => this.newDashboardModal = true,
+            command: () => (this.newDashboardModal = true),
           },
           {
             label: 'Manage Favourite',
@@ -112,6 +116,7 @@ export class NavbarComponent implements OnInit {
       },
     ];
   }
+
   loadDashboard(id: string) {
     this.favList.forEach((item: any) => {
       if ('styleClass' in item) delete item.styleClass;
@@ -124,11 +129,7 @@ export class NavbarComponent implements OnInit {
   }
 
   createDashboard() {
-    this.showToast(
-      'success',
-      'Success',
-      'New Dashboard created successfully'
-    )
+    this.showToast('success', 'Success', 'New Dashboard created successfully');
     this.newDashboardModal = false;
   }
 
@@ -142,7 +143,7 @@ export class NavbarComponent implements OnInit {
           'success',
           'Success',
           'New Dashboard created successfully'
-        )
+        );
         // this.messageService.add({
         //   severity: 'success',
         //   summary: 'Success',
@@ -157,7 +158,7 @@ export class NavbarComponent implements OnInit {
           severity: 'error',
           summary: 'Error',
           detail: 'Failed to create Dashboard',
-          life: 1500
+          life: 1500,
         });
       },
     });
@@ -167,7 +168,7 @@ export class NavbarComponent implements OnInit {
       severity,
       summary,
       detail,
-      life: 1500
+      life: 1500,
     });
   }
   closePanelMenu(): void {
