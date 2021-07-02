@@ -13,8 +13,9 @@ import { PanelMenuModule } from 'primeng/panelmenu';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { MessagesModule } from 'primeng/messages';
 import { ToastModule } from 'primeng/toast';
-import {DialogModule} from 'primeng/dialog';
-// import { ListboxModule } from 'primeng/listbox';
+import { DialogModule } from 'primeng/dialog';
+import { ListboxModule } from 'primeng/listbox';
+import { TableModule } from 'primeng/table';
 // import { TabViewModule } from 'primeng/tabview';
 
 @NgModule({
@@ -32,8 +33,9 @@ import {DialogModule} from 'primeng/dialog';
     ConfirmDialogModule,
     MessagesModule,
     ToastModule,
-    DialogModule
-    // ListboxModule
+    DialogModule,
+    ListboxModule,
+    TableModule,
     // TabViewModule,
   ],
 })

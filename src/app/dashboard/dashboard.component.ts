@@ -9,6 +9,7 @@ Chart.register(...registerables);
   styleUrls: ['./dashboard.component.css'],
 })
 export class DashboardComponent implements OnInit {
+
   constructor() {}
 
   ngOnInit(): void {

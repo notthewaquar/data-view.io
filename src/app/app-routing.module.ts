@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { DataSourcesComponent } from './data-sources/data-sources.component';
 import { NavbarComponent } from './navbar/navbar.component';
 
 const routes: Routes = [
@@ -15,8 +17,12 @@ const routes: Routes = [
       },
       {
         path: 'dashboard',
-        component: NavbarComponent,
+        component: DashboardComponent,
         // canActivate: [AuthGuard]
+      },
+      {
+        path: 'data-sources',
+        component: DataSourcesComponent
       },
       // {
       //   path: 'dashboard',

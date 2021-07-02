@@ -1,5 +1,6 @@
 import { Message } from '@angular/compiler/src/i18n/i18n_ast';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { MenuItem } from 'primeng/api';
 import {
@@ -38,7 +39,8 @@ export class NavbarComponent implements OnInit {
 
   constructor(
     private confirmationService: ConfirmationService,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -102,22 +104,28 @@ export class NavbarComponent implements OnInit {
       {
         label: 'Data Sources',
         icon: 'pi pi-fw pi-folder',
-        command: () => this.loadDashboard('22'),
+        command: () => this.loadDataSources(),
       },
       {
-        label: 'Data Sources',
+        label: 'Demo 1',
         icon: 'pi pi-fw pi-folder',
         command: () => this.loadDashboard('22'),
       },
       {
-        label: 'Data Sources',
+        label: 'Demo 2',
         icon: 'pi pi-fw pi-folder',
         command: () => this.loadDashboard('22'),
       },
     ];
   }
 
+  // other routes
+  loadDataSources(): void {
+    this.router.navigate(['/data-sources'])
+  }
+
   loadDashboard(id: string) {
+    this.router.navigate(['/dashboard'])
     this.favList.forEach((item: any) => {
       if ('styleClass' in item) delete item.styleClass;
       if (item.id === id) item.styleClass = 'active';
