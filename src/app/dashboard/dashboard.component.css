@@ -1,0 +1,12 @@
+:host::ng-deep .p-card .p-card-body {
+  /* padding: 0 0.75rem; */
+}
+
+.row {
+  margin: 0 !important;
+}
+
+canvas {
+  height: 40vh;
+  width: 100%;
+}

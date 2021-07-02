@@ -1,0 +1,61 @@
+:host::ng-deep .p-sidebar {
+  box-shadow: none;
+  border-right: 1px solid #00000012;
+}
+@media only screen and (min-width: 770px) {
+  .main-toolbar {
+    display: flex;
+    /* height: calc(100vh - 70px); */
+  }
+  .main-toolbar .main-body {
+    width: 100%;
+  }
+  .main-toolbar aside {
+    width: 0;
+    overflow-y: auto;
+    transition: all 0.2s;
+  }
+  .main-toolbar aside.open {
+    width: 280px;
+  }
+  .my-main-body {
+    width: 100%;
+  }
+  aside.open + .my-main-body {
+    width: calc(100% - 280px);
+  }
+}
+
+.pi.pi-bars .title {
+  font-family: Roboto, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial,
+    Lucida Grande, sans-serif;
+  font-size: 16px;
+  margin-left: 10px;
+}
+
+:host::ng-deep .p-panelmenu .p-panelmenu-header.p-highlight > a {
+  background: var(--primary-color);
+  color: #fff !important;
+}
+:host::ng-deep
+  .p-panelmenu
+  .p-panelmenu-header:not(.p-highlight):not(.p-disabled)
+  > a:hover,
+:host::ng-deep
+  .p-panelmenu
+  .p-panelmenu-header.p-highlight:not(.p-disabled)
+  > a:hover {
+  background: var(--primary-color);
+  color: #fff;
+}
+
+:host::ng-deep .p-menuitem.active {
+  background: var(--surface-300);
+}
+:host::ng-deep .p-menuitem.active a {
+  color: #fff;
+}
+
+.dash-panel {
+  /* padding: 20px; */
+}

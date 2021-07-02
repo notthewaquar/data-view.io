@@ -1,0 +1,144 @@
+<div class="main-toolbar">
+  <aside [ngClass]="{ open: visibleSidebar1 }"></aside>
+  <div class="my-main-body">
+    <div class="dash-panel">
+      <p-toolbar>
+        <div class="p-toolbar-group-left">
+          <button
+            pButton
+            pRipple
+            (click)="visibleSidebar1 = !visibleSidebar1"
+            class="pi pi-bars"
+            style="background: #3f51b5"
+          >
+            <span class="title">Data View IO</span>
+          </button>
+        </div>
+
+        <div class="p-toolbar-group-right">
+          <p-button icon="pi pi-search" class="p-mr-2"></p-button>
+          <p-button
+            icon="pi pi-calendar"
+            styleClass="p-button-success p-mr-2"
+          ></p-button>
+          <p-button
+            (click)="closePanelMenu()"
+            icon="pi pi-times"
+            styleClass="p-button-danger"
+          ></p-button>
+        </div>
+      </p-toolbar>
+      <app-dashboard></app-dashboard>
+    </div>
+  </div>
+</div>
+<p-sidebar [(visible)]="visibleSidebar1" [baseZIndex]="10000">
+  <div
+    class="d-flex justify-content-between py-2 align-items-center"
+    style="height: 60px"
+  >
+    <h3>Left Sidebar</h3>
+    <button
+      pButton
+      type="button"
+      pRipple
+      (click)="visibleSidebar1 = !visibleSidebar1"
+      icon="pi pi-times"
+      class="p-button-link"
+    ></button>
+  </div>
+  <!-- <button
+    pButton
+    type="button"
+    pRipple
+    icon="pi pi-th-large"
+    label="Dashboard"
+    class="w-100"
+    routerLink="/dashboard"
+  ></button>
+  <p-divider></p-divider>
+  <button
+    pButton
+    type="button"
+    pRipple
+    icon="pi pi-fw pi-power-off"
+    label="Logout"
+    routerLink="/login"
+    class="p-button-sm p-button-danger"
+  ></button> -->
+
+  <p-panelMenu [multiple]="false" [model]="dashboardList"></p-panelMenu>
+</p-sidebar>
+<!-- confirm -->
+<p-confirmDialog
+  [style]="{ width: '50vw' }"
+  [baseZIndex]="10000"
+  rejectButtonStyleClass="p-button-text"
+></p-confirmDialog>
+<p-toast></p-toast>
+<!-- new dashboard -->
+<p-dialog
+  header="Create New Dashboard"
+  icon="pi pi-check"
+  [(visible)]="newDashboardModal"
+  [style]="{ width: '400px' }"
+  [baseZIndex]="10000"
+>
+  <input
+    id="float-input"
+    type="text"
+    pInputText
+    placeholder="Dashboard Name"
+    class="w-100"
+  />
+  <ng-template pTemplate="footer">
+    <button
+      pButton
+      pRipple
+      icon="pi pi-times"
+      (click)="newDashboardModal = false"
+      label="Close"
+      class="p-button-danger"
+    ></button>
+    <button
+      pButton
+      pRipple
+      icon="pi pi-check"
+      (click)="createDashboard()"
+      label="Create"
+    ></button>
+  </ng-template>
+</p-dialog>
+<!-- Manage dasahboards -->
+<p-dialog
+  header="Create New Dashboard"
+  icon="pi pi-check"
+  [(visible)]="newDashboardModal"
+  [style]="{ width: '400px' }"
+  [baseZIndex]="10000"
+>
+  <input
+    id="float-input"
+    type="text"
+    pInputText
+    placeholder="Dashboard Name"
+    class="w-100"
+  />
+  <ng-template pTemplate="footer">
+    <button
+      pButton
+      pRipple
+      icon="pi pi-times"
+      (click)="newDashboardModal = false"
+      label="Close"
+      class="p-button-danger"
+    ></button>
+    <button
+      pButton
+      pRipple
+      icon="pi pi-check"
+      (click)="createDashboard()"
+      label="Create"
+    ></button>
+  </ng-template>
+</p-dialog>

@@ -1,0 +1,29 @@
+.btn-change-theme {
+  font-size: 26px;
+  line-height: inherit;
+  cursor: pointer;
+  position: fixed;
+  top: 20%;
+  left: auto;
+  right: 5px;
+  min-width: 45px;
+  width: 45px;
+  height: 45px;
+}
+
+:host::ng-deep .btn-change-theme .p-button-label {
+  display: none;
+}
+.btn-change-theme i {
+  width: 45px;
+  height: 45px;
+  align-items: center;
+  line-height: 45px;
+  font-size: 20px;
+  transform: rotate(1turn);
+  transition: transform 1s;
+}
+
+.btn-change-theme.active i {
+  transform: rotate(0deg);
+}
