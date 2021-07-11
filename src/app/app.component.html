@@ -7,5 +7,5 @@
   (click)="changeTheme()"
   [ngClass]="themeStatus ? 'active' : ''"
 >
-  <i class="pi pi-cog"></i>
+  <i class="pi {{ themeStatus ? 'pi-moon' : 'pi-sun' }}"></i>
 </button>

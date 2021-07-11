@@ -1,36 +1,140 @@
 <p-card>
+  <button
+    (click)="showBasicDialog()"
+    pButton
+    pRipple
+    type="button"
+    icon="pi pi-plus"
+    class="mb-2"
+    label="Add New Data Source"
+  ></button>
   <p-table [value]="products">
     <ng-template pTemplate="header">
       <tr>
+        <th>Source</th>
         <th>Name</th>
-        <th>Image</th>
-        <th>Price</th>
-        <th>Category</th>
-        <th>Reviews</th>
-        <th>Status</th>
+        <th>Created Date</th>
+        <th>Action</th>
       </tr>
     </ng-template>
     <ng-template pTemplate="body" let-product>
       <tr>
+        <td>{{ product.source }}</td>
         <td>{{ product.name }}</td>
-        <td>{{ product.name }}</td>
-        <td>{{ product.price | currency: "USD" }}</td>
-        <td>{{ product.category }}</td>
-        <td>{{ product.category }}</td>
-        <td>
-          <span
-            [class]="
-              'product-badge status-' + product.inventoryStatus.toLowerCase()
-            "
-            >{{ product.inventoryStatus }}</span
-          >
+        <td>{{ product.created_date }}</td>
+        <td style="display: flex; align-items: center; justify-content: center">
+          <button
+            pButton
+            pRipple
+            type="button"
+            icon="pi pi-sliders-h"
+            class="p-button-primary"
+            pTooltip="Go to Dataset Builder"
+            tooltipPosition="bottom"
+          ></button>
+          <span class="mx-2">|</span>
+          <button
+            pButton
+            pRipple
+            type="button"
+            icon="pi pi-chart-bar"
+            class="p-button-primary"
+            pTooltip="Go to Metric Builder"
+            tooltipPosition="bottom"
+          ></button>
+          <span class="mx-2">|</span>
+          <button
+            pButton
+            pRipple
+            type="button"
+            icon="pi pi-trash"
+            class="p-button-danger"
+            pTooltip="Delete Data Source"
+            tooltipPosition="bottom"
+          ></button>
         </td>
       </tr>
     </ng-template>
     <ng-template pTemplate="summary">
       <div class="p-d-flex p-ai-center p-jc-between">
-        In total there are {{ products ? products.length : 0 }} products.
+        In total there are {{ products ? products.length : 0 }} Data Sources.
       </div>
     </ng-template>
   </p-table>
 </p-card>
+
+<!-- Add New Data Source Modal -->
+<form [formGroup]="dataSourceForm" (ngSubmit)="onDataSourceFormSubmit()">
+  <p-dialog
+    header="Import New Data Source"
+    [(visible)]="addNewDataSourceModal"
+    [style]="{ width: '80vw' }"
+    [baseZIndex]="10000"
+    [contentStyle]="{ overflow: 'visible' }"
+  >
+    <div>
+      <input
+        type="hidden"
+        formControlName="dataSourceOption"
+        #dataSourceOptionRef
+      />
+      <p-dropdown
+        class="w-100"
+        [style]="{ width: '100%' }"
+        [options]="cities"
+        placeholder="Select a Data Source"
+        optionLabel="name"
+        [showClear]="true"
+        [filter]="true"
+        filterBy="name"
+        (onChange)="pdropdown1($event.value.data)"
+      >
+        <ng-template let-item pTemplate="selectedItem">
+          <i class="pi {{ item.icon }} mr-2"></i>
+          <span>{{ item.name }}</span>
+        </ng-template>
+        <ng-template let-item pTemplate="item">
+          <i class="pi {{ item.icon }} mr-2"></i>
+          <span>{{ item.name }}</span>
+        </ng-template>
+      </p-dropdown>
+      <br /><br />
+      <label
+        style="position: relative;
+              background: var(--surface-700);
+              cursor: pointer;
+              width: 100%;"
+        for="jsonFileUpload" 
+        pButton
+        *ngIf="['json', 'excel'].includes(dataSourceOptionRef.value)"
+        > 
+        <span>{{ dataSourceFileName }}</span>
+        <input
+          style="position: absolute;
+                top: 0;
+                left: 0;
+                opacity: 0;
+                height: 100%;
+                width: 100%;
+                cursor: pointer;"
+          id="jsonFileUpload"
+          type="file"
+          (change)="onUploadedJSONFiles($event)"
+          [accept]="dataSourceFileAccept"
+          formControlName="uploadDSFile"
+        />
+      </label>
+    </div>
+    <ng-template pTemplate="footer">
+      <button
+        pButton
+        pRipple
+        button="submit"
+        icon="pi pi-check"
+        label="Get Data"
+        styleClass="p-button-text"
+      ></button>
+      <!-- (click)="addNewDataSourceModal = false" -->
+    </ng-template>
+  </p-dialog>
+</form>

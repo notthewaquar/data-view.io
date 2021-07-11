@@ -1,0 +1,17 @@
+:host::ng-deep .p-datatable-wrapper.ng-star-inserted {
+  overflow: auto;
+}
+
+p-table {
+}
+th {
+  min-width: 120px;
+  width: 120px;
+  font-weight: 700 !important;
+}
+td {
+}
+th,
+td {
+  text-align: center !important;
+}

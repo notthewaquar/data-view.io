@@ -16,6 +16,9 @@ import { ToastModule } from 'primeng/toast';
 import { DialogModule } from 'primeng/dialog';
 import { ListboxModule } from 'primeng/listbox';
 import { TableModule } from 'primeng/table';
+import { DropdownModule } from 'primeng/dropdown';
+import { TooltipModule } from 'primeng/tooltip';
+import {FileUploadModule} from 'primeng/fileupload';
 // import { TabViewModule } from 'primeng/tabview';
 
 @NgModule({
@@ -36,7 +39,9 @@ import { TableModule } from 'primeng/table';
     DialogModule,
     ListboxModule,
     TableModule,
-    // TabViewModule,
+    DropdownModule,
+    TooltipModule,
+    FileUploadModule
   ],
 })
 export class PrimeNgModule {}

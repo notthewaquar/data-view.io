@@ -122,6 +122,7 @@ export class NavbarComponent implements OnInit {
   // other routes
   loadDataSources(): void {
     this.router.navigate(['/data-sources'])
+    this.visibleSidebar1 = false;
   }
 
   loadDashboard(id: string) {
